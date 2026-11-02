@@ -27,6 +27,21 @@ See sections 15 and 16 of the [LICENSE](LICENSE).
 
 ## Install
 
+Install from GitHub (needs Python 3.9 or newer):
+
+```bash
+pip install git+https://github.com/jaydeeptindori/icon_quantize.git
+```
+
+For development:
+
+```bash
+git clone https://github.com/jaydeeptindori/icon_quantize.git
+cd icon_quantize
+pip install -e .
+```
+
+
 ```bash
 pip install icon-quantize        # once published
 # or from a checkout of this folder:
