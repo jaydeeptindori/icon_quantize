@@ -1,0 +1,17 @@
+# Example rules file for icon-quantize: copy, edit and use with
+#   icon-quantize --inplace --rules my_setup.rules out/
+# Entries override the built-in "icon" preset; names are case-insensitive.
+#
+#   dec N   absolute error <= 0.5*10**-N (in the variable's units)
+#   sig N   N significant digits at any magnitude
+#   exact   never rounded
+
+# tighter vertical velocity for LES turbulence statistics
+w            dec 4      # 0.1 mm/s
+
+# ICON-ART style tracers spanning many orders of magnitude
+# tracer_01  sig 4
+# tracer_02  sig 4
+
+# masks and flags must never change
+# lsm        exact

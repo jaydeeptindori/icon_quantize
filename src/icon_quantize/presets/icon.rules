@@ -1,0 +1,130 @@
+# icon-quantize preset "icon": ICON NWP and LES output variables
+# (names as written by ICON's output_nml, matched case-insensitively).
+#
+# rule      meaning
+# dec N     absolute: max error 0.5*10**-N in the variable's units
+# sig N     relative: N significant digits, max error 0.5*10**(1-N) of the value
+# exact     never rounded (lossless compression only)
+#
+# Variables not listed here get the --default rule (sig 6) and are reported.
+# Validated on ICON-LES (624 m nest) and ICON NWP 2 km output
+# (TKE and 2TE turbulence schemes), 2026.
+
+# ---- 3D dynamics / thermodynamics ----
+u           dec 3     # 1 mm/s
+v           dec 3
+vn          dec 3
+w           dec 3
+temp        dec 3     # 1 mK
+t           dec 3
+theta_v     dec 3
+pres        dec 1     # 0.1 Pa
+p           dec 1
+rho         dec 5     # 1e-5 kg m-3
+den         dec 5
+rh          dec 2     # 0.01 %
+relhum      dec 2
+tke         dec 4     # 1e-4 m2 s-2
+z_ifc       dec 2     # 1 cm
+z_mc        dec 2
+hhl         dec 2
+
+# ---- cloud cover: relative, so small fractions near thresholds survive ----
+clc         sig 5
+clc_rad     sig 5
+clct        sig 5
+clch        sig 5
+clcm        sig 5
+clcl        sig 5
+
+# ---- mass mixing ratios, number concentrations and other fields spanning
+#      many orders of magnitude: relative precision ----
+qv          sig 4
+qc          sig 4
+qi          sig 4
+qr          sig 4
+qs          sig 4
+qg          sig 4
+qh          sig 4
+qnc         sig 4
+qni         sig 4
+qnr         sig 4
+qns         sig 4
+qng         sig 4
+qnh         sig 4
+tot_qv_dia  sig 4
+tot_qc_dia  sig 4
+tot_qi_dia  sig 4
+ql_2te      sig 4
+reff_qc     sig 4
+reff_qr     sig 4
+reff_qi     sig 4
+reff_qs     sig 4
+qv_2m       sig 4
+qv_s        sig 4
+qhfl_s      sig 4
+w_i         sig 4
+tqv         sig 4
+tqc         sig 4
+tqi         sig 4
+tqr         sig 4
+tqs         sig 4
+tqg         sig 4
+
+# ---- radiation and surface fluxes ----
+sob_t       dec 2     # 0.01 W m-2
+thb_t       dec 2
+sob_s       dec 2
+thb_s       dec 2
+sod_t       dec 2
+sou_t       dec 2
+sou_s       dec 2
+thu_s       dec 2
+sobclr_s    dec 2
+shfl_s      dec 2
+lhfl_s      dec 2
+
+# ---- precipitation ----
+prec_gsp    dec 4     # 1e-4 kg m-2
+prec_con    dec 4
+tot_prec    dec 4
+rain_gsp    dec 4
+rain_con    dec 4
+
+# ---- near surface and soil ----
+t_2m        dec 3
+td_2m       dec 3
+t_g         dec 3
+t_s         dec 3
+t_sk        dec 3
+skt         dec 3
+t_so        dec 3
+t_ice       dec 3
+t_cl        dec 3
+relhum_2m   dec 2
+u_10m       dec 3
+v_10m       dec 3
+w_so        dec 2     # 0.01 kg m-2
+smi         dec 4
+pmsl        dec 1     # 0.1 Pa
+ps          dec 1
+
+# ---- convection / diagnostics ----
+cape        dec 2     # 0.01 J kg-1
+cape_ml     dec 2
+cin_ml      dec 2
+hbas_con    dec 1     # 0.1 m
+htop_con    dec 1
+hsurf       dec 2
+albvisdir   dec 2     # 0.01 %
+albvisdif   dec 2
+albnirdir   dec 2
+albnirdif   dec 2
+
+# ---- synthetic satellite brightness temperatures ----
+synmsg_bt_cl_wv6.2   dec 3   # 1 mK
+synmsg_bt_cl_ir10.8  dec 3
+
+# ---- categorical fields: never round ----
+soiltyp       exact
+lc_class_t_1  exact

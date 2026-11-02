@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "icon-quantize"
+dynamic = ["version"]
+description = "Shrink ICON model netCDF output by controlled, verified precision reduction and compression"
+readme = "README.md"
+license = { text = "GPL-3.0-or-later" }
+authors = [{ name = "Dr. Jaydeep Singh (GUF)", email = "tindori.jaydeep@gmail.com" }]
+requires-python = ">=3.9"
+dependencies = [
+    "numpy>=1.20",
+    "netCDF4>=1.6",  # rounding is done in numpy, any libnetcdf with netCDF4/HDF5 works
+]
+keywords = ["ICON", "netCDF", "quantization", "compression", "climate", "weather", "LES"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Operating System :: POSIX :: Linux",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Atmospheric Science",
+]
+
+[project.scripts]
+icon-quantize = "icon_quantize.cli:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "icon_quantize.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+icon_quantize = ["presets/*.rules"]
